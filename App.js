@@ -2,10 +2,9 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { Avatar, Button, Input } from 'react-native-elements';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-   function LoginScreen({navigation}) {
+
+  export default function Login() {
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
@@ -32,7 +31,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
       </Text>
       <Input placeholder="" secureTextEntry={true}/>
 
-      <Button title='Logar' onPress={() => navigation.navigate('Listacontatos')}>
+      <Button title='Logar' 
       </Button>
             <Button
               title="Cadastrar"
@@ -150,13 +149,6 @@ const styles1 = StyleSheet.create({
   );
 }
 
-function ListacontatosScreen() {
-  return (
-    <View style={styles.container}>
-      <Text> Lista de Contatos</Text>
-    </View>
-  );
-}
 
 const styles = StyleSheet.create({
   container: {
@@ -186,17 +178,3 @@ const styles = StyleSheet.create({
 });
 
 
-const Stack = createNativeStackNavigator();
-
-function App() {
-return (
-<NavigationContainer>
-<Stack.Navigator>
-<Stack.Screen name="Login" component={LoginScreen} />
-<Stack.Screen name="Listacontatos" component={ListacontatosScreen} />
-</Stack.Navigator>
-</NavigationContainer>
-);
-}
-
-export default App;
