@@ -2,8 +2,10 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { Avatar, Button, Input } from 'react-native-elements';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-export default function Login() {
+   function LoginScreen({navigation}) {
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
@@ -19,7 +21,7 @@ export default function Login() {
       </View>
 
       <Text style={{color: '#000000', fontWeight: 'bold',  marginLeft: -300}}>
-        Email
+        Login
       </Text>
       <Input
       placeholder=''
@@ -30,13 +32,8 @@ export default function Login() {
       </Text>
       <Input placeholder="" secureTextEntry={true}/>
 
-             <Button
-              title="Logar"
-              titleStyle={{ fontWeight: 'bold', fontSize: 18}}
-              containerStyle={{ marginVertical: 10 }}
-              buttonStyle={{ backgroundColor: '#00c0a3', borderRadius:10,}}
-            />
-
+      <Button title='Logar' onPress={() => navigation.navigate('Listacontatos')}>
+      </Button>
             <Button
               title="Cadastrar"
               titleStyle={{ fontWeight: 'bold', fontSize: 18 }}
@@ -44,8 +41,21 @@ export default function Login() {
             />
       <Text style={{marginTop:10,color: '#000000' }}>Esqueceu a senha</Text>
     </View>
+    
+
+
   );
 }
+
+
+
+
+
+
+
+
+
+
 
 
  function Cadastro() {
@@ -111,6 +121,9 @@ const styles1 = StyleSheet.create({
 
 
 
+
+
+
  function Esqueceu() {
   return (
     <View style={styles.container}>
@@ -133,6 +146,14 @@ const styles1 = StyleSheet.create({
         titleStyle={{ fontWeight: 'bold', fontSize: 18 }}
         buttonStyle={{ backgroundColor: '#00c0a3', borderRadius: 10 }}
       />
+    </View>
+  );
+}
+
+function ListacontatosScreen() {
+  return (
+    <View style={styles.container}>
+      <Text> Lista de Contatos</Text>
     </View>
   );
 }
@@ -163,3 +184,19 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
 });
+
+
+const Stack = createNativeStackNavigator();
+
+function App() {
+return (
+<NavigationContainer>
+<Stack.Navigator>
+<Stack.Screen name="Login" component={LoginScreen} />
+<Stack.Screen name="Listacontatos" component={ListacontatosScreen} />
+</Stack.Navigator>
+</NavigationContainer>
+);
+}
+
+export default App;
